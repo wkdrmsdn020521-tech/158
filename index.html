@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마블 룰렛 - 방송용 핀볼</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="roadmap-panel">
+        <header>
+          <h1>로드맵</h1>
+          <p>마우스를 올려서 시야를 이동해 보세요</p>
+        </header>
+        <canvas id="roadmap" width="220" height="640"></canvas>
+      </aside>
+      <main class="play-area">
+        <section class="control-panel">
+          <h2>참가자 구성</h2>
+          <label for="ballInput">이름 또는 수식 입력 (예: 장근우*2, 라라+마마)</label>
+          <textarea
+            id="ballInput"
+            placeholder="이름을 입력하고 엔터 또는 쉼표로 구분하세요"
+          ></textarea>
+          <div class="control-buttons">
+            <button id="spawnBtn" class="primary">핀볼 생성</button>
+            <button id="shuffleBtn">섞기</button>
+            <button id="resetBtn" class="danger">초기화</button>
+          </div>
+          <dl class="control-stats">
+            <div>
+              <dt>현재 핀볼</dt>
+              <dd id="ballCount">0</dd>
+            </div>
+            <div>
+              <dt>완주</dt>
+              <dd id="finishCount">0</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="field-wrapper">
+          <header class="field-header">
+            <h2>라이브 필드</h2>
+            <div class="field-status" id="fieldStatus">대기 중</div>
+          </header>
+          <canvas id="field" width="780" height="640"></canvas>
+          <div class="camera-hint">카메라 포커스: <span id="cameraFocus">전체</span></div>
+        </section>
+      </main>
+      <aside class="leaderboard-panel">
+        <header>
+          <h2>실시간 순위</h2>
+          <p>골인지점에 가까울수록 상위</p>
+        </header>
+        <ol id="leaderboard" class="leaderboard"></ol>
+      </aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
